@@ -1,0 +1,96 @@
+<div class="wrapper" cdkDropListGroup>
+
+    <!-- Accordion -0--------------------------------------------------------------------------------------------------  -->
+
+    <cdk-accordion class="castomizer accoridion">
+        <!-- Accordion meta-data -->
+        <!-- ---------------------------------------removed------------------------------------------------------- -->
+        <!-- <cdk-accordion-item *ngFor="let item of formStyle; let index = index;" #accordionItem="cdkAccordionItem"
+            role="button" tabindex="0" [attr.id]="'accordion-header-' + index"
+            [attr.aria.expanded]="accordionItem.expanded" [attr.aria.controls]="'accordion-body-' + index"
+            class="accordion-item">
+            Accordion header 
+            <div class="accordion-header" (click)="accordionItem.toggle()">
+                <h5>{{item.heading}}</h5>
+                <span>{{accordionItem.expanded ? 'close' : 'open'}}</span>
+            </div>
+            Accordion body 
+            <div class="accordion-body" role="region" [style.display]="accordionItem.expanded ? '' : 'none' "
+                [attr.id]="'accordion-body-' + index" [attr.aria.labelledby]="'accordion-header-' + index">
+                <form class="form-formStyle" #formGeneralStyle="ngForm" (ngSubmit)="formSubmit(formGeneralStyle)">
+                    <input ngModel name="formLabel" #formLabel="ngModel" type="text" placeholder="Form Label">
+                    <div class="form-box" *ngFor="let item of formStyle">
+                        <input type="color" ngModel name="textColor" #textColor="ngModel">
+                        <input type="color" ngModel name="bgColor" #bgColor="ngModel">
+                        <select type="text" placeholder="border" ngModel name="selectBorder" #selectBorder="ngModel">
+                            <option value="{{border}}" *ngFor="let border of item.formStyle.borderType">
+                                {{border}}
+                            </option>
+                        </select>
+                        <input type="color" ngModel name="borderColor" #borderColor="ngModel">
+                    </div>
+                    <button>Apply</button>
+                </form>
+            </div>
+        </cdk-accordion-item> -->
+
+
+        <!-- Accordion -1--------------------------------------------------------------------------------------------------  -->
+
+        <!-- Accordion meta-data -->
+        <!-- <cdk-accordion-item *ngFor="let item of fieldStyle; let index = index;" #accordionItem="cdkAccordionItem"
+            role="button" tabindex="0" [attr.id]="'accordion-header-' + index"
+            [attr.aria.expanded]="accordionItem.expanded" [attr.aria.controls]="'accordion-body-' + index"
+            class="accordion-item">
+            Accordion header 
+            <div class="accordion-header" (click)="accordionItem.toggle()">
+                <h5>{{item.heading}}</h5>
+                <span>{{accordionItem.expanded ? 'close' : 'open'}}</span>
+            </div>
+            Accordion body 
+            <div class="accordion-body" role="region" [style.display]="accordionItem.expanded ? '' : 'none' "
+                [attr.id]="'accordion-body-' + index" [attr.aria.labelledby]="'accordion-header-' + index">
+                {{item | json}}
+            </div>
+
+        </cdk-accordion-item>
+    </cdk-accordion> -->
+
+        <!-- Drag and drop --------------------------------------------------------------------------------------------------- -->
+
+        <!-- ------------------------------------------removed-end----------------------------------- -->
+
+        <!-- <div class="drop-zone-wrapper" cdkDropList (cdkDropListDropped)="drop($event)" [cdkDropListData]="formElements"
+        *ngFor="let style of formGeneralStyles">
+        <div class="drop-zone" [style.border-color]="style.formStyle.borderColor"
+            [style.border-style]="style.formStyle.borderType[1]" [style.background-color]="style.formStyle.bgColor">
+            <div class="heading">
+                <h3 [style.color]="style.formStyle.textColor">{{style.formStyle.label}}</h3>
+            </div>
+            <div *ngFor="let element of formElements">{{element.element}}
+                <div *ngIf="element.element === 'Input'">
+                    <input type="text" name="" id="" placeholder="{{element.element}}">
+                </div>
+                <div *ngIf="element.element === 'Textarea'">
+                    <textarea type="text" name="" id=""></textarea>
+                </div>
+                <div *ngIf="element.element === 'Button'">
+                    <button>{{element.element}}</button>
+                </div>
+                <div *ngIf="element.element === 'Select'">
+                    <select name="" id="">
+                        <option value="">{{element.element}}</option>
+                    </select>
+                </div>
+                <div *ngIf="element.element === 'Checkbox'">
+                    <input type="checkbox" name="" id="">
+                </div>
+            </div>
+        </div>
+    </div> -->
+
+        <!-- Builder --------------------------------------------------------------------------------------------------- -->
+        <div class="drag-elemetns" cdkDropList [cdkDropListData]="elements">
+            <span *ngFor="let element of elements" cdkDrag>{{element.element}}</span>
+        </div>
+        <div></div>

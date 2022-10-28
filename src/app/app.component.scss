@@ -1,0 +1,11 @@
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.main {
+    display: grid;
+    grid-template-columns: (repeat(3, 1fr));
+    gap: 10px;
+}
