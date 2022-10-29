@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { IFormStyle } from '../customizer/customizer.component'
 
 interface ICastomizeForm {
   heading: string,
@@ -6,17 +7,10 @@ interface ICastomizeForm {
     label: string,
     textColor: string,
     bgColor: string,
-    borderType: string[],
+    borderTypes: string[],
     borderColor: string,
 
   }
-}
-interface IFormStyle {
-  formLabel: string,
-  textColor: string,
-  bgColor: string,
-  selectBorder: string,
-  borderColor: string
 }
 
 @Component({
@@ -26,7 +20,8 @@ interface IFormStyle {
 })
 export class FormStyleComponent implements OnInit {
 
-  formGeneralStyles: Array<ICastomizeForm> = []
+  // formGeneralStyles: Array<ICastomizeForm> = []
+
   formStyle: Array<ICastomizeForm> = [
     {
       heading: 'Form Style',
@@ -34,29 +29,43 @@ export class FormStyleComponent implements OnInit {
         label: "",
         textColor: "",
         bgColor: "",
-        borderType: ['none', 'solid', 'dotted', 'dashed', 'double'],
+        borderTypes: ['none', 'solid', 'dotted', 'dashed', 'double'],
         borderColor: ""
       }
     }
   ]
+
   constructor() { }
 
   ngOnInit(): void {
   }
+  @Output() customizeForm: EventEmitter<IFormStyle> = new EventEmitter();
 
   formSubmit(event: IFormStyle) {
-    this.formGeneralStyles = this.formStyle.map(item => {
-      return {
-        ...item, formStyle: {
-          label: event.formLabel,
-          textColor: event.textColor,
-          bgColor: event.bgColor,
-          borderType: ['solid', 'dotted', 'dashed'],
-          borderColor: event.borderColor
-        }
-      }
+    this.customizeForm.emit({
+      formLabel: event.formLabel,
+      textColor: event.textColor,
+      bgColor: event.bgColor,
+      borderType: event.borderType,
+      borderColor: event.borderColor
     })
-    console.log(event);
   }
 
+
 }
+
+
+// formSubmit(event: IFormStyle) {
+//   this.formGeneralStyles = this.formStyle.map(item => {
+//     return {
+//       ...item, formStyle: {
+//         label: event.formLabel,
+//         textColor: event.textColor,
+//         bgColor: event.bgColor,
+//         borderType: ['solid', 'dotted', 'dashed'],
+//         borderColor: event.borderColor
+//       }
+//     }
+//   })
+//   console.log(event);
+// }

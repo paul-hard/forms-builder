@@ -62,10 +62,10 @@
 
         <!-- <div class="drop-zone-wrapper" cdkDropList (cdkDropListDropped)="drop($event)" [cdkDropListData]="formElements"
         *ngFor="let style of formGeneralStyles">
-        <div class="drop-zone" [style.border-color]="style.formStyle.borderColor"
-            [style.border-style]="style.formStyle.borderType[1]" [style.background-color]="style.formStyle.bgColor">
+        <div class="drop-zone" 
+            >
             <div class="heading">
-                <h3 [style.color]="style.formStyle.textColor">{{style.formStyle.label}}</h3>
+                <h3 >{{style.formStyle.label}}</h3>
             </div>
             <div *ngFor="let element of formElements">{{element.element}}
                 <div *ngIf="element.element === 'Input'">
