@@ -1,0 +1,13 @@
+<!-- <div class="main-form" cdkDropList [cdkDropListData]="elements">
+    <span *ngFor="let element of elements" cdkDrag>{{element.element}}</span>
+</div> -->
+<div class="main-form" [style.border-color]="tempData.borderColor" [style.background-color]="tempData.bgColor"
+    [style.border-style]="tempData.selectBorder">
+    <div class="main-form__label">
+        <h3 [style.color]="tempData.textColor">{{tempData.formLabel}}</h3>
+    </div>
+    <div class="main-form__elements">
+        <!-- Could be separate component: <app-elemets></app-elemets> -->
+
+    </div>
+</div>

@@ -1,0 +1,18 @@
+<!-- Accordion meta-data -->
+<div class="field-style__wrapper">
+    <cdk-accordion-item *ngFor="let item of fieldStyle; let index = index;" #accordionItem="cdkAccordionItem"
+        role="button" tabindex="0" [attr.id]="'accordion-header-' + index" [attr.aria.expanded]="accordionItem.expanded"
+        [attr.aria.controls]="'accordion-body-' + index" class="field-style__accordion-item">
+        <!-- Accordion header -->
+        <div class="field-style__accordion-header" (click)="accordionItem.toggle()">
+            <h5>{{item.heading}}</h5>
+            <span>{{accordionItem.expanded ? 'close' : 'open'}}</span>
+        </div>
+        <!-- Accordion body -->
+        <div class="field-style__accordion-body" role="region" [style.display]="accordionItem.expanded ? '' : 'none' "
+            [attr.id]="'accordion-body-' + index" [attr.aria.labelledby]="'accordion-header-' + index">
+            <div>Lorem, ipsum dolor.</div>
+            <div>Lorem, ipsum.</div>
+        </div>
+    </cdk-accordion-item>
+</div>

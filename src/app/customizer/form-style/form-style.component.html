@@ -1,0 +1,32 @@
+<div class="form-style__wrapper">
+    <cdk-accordion-item *ngFor="let item of formStyle; let index = index;" #accordionItem="cdkAccordionItem"
+        role="button" tabindex="0" [attr.id]="'accordion-header-' + index" [attr.aria.expanded]="accordionItem.expanded"
+        [attr.aria.controls]="'accordion-body-' + index" class="form-style__accordion-item">
+        <!-- Accordion header -->
+        <div class="form-style__accordion-header" (click)="accordionItem.toggle()">
+            <h5>{{item.heading}}</h5>
+            <span>{{accordionItem.expanded ? 'close' : 'open'}}</span>
+        </div>
+        <!-- Accordion body -->
+        <div class="form-style__accordion-body" role="region" [style.display]="accordionItem.expanded ? '' : 'none' "
+            [attr.id]="'accordion-body-' + index" [attr.aria.labelledby]="'accordion-header-' + index">
+            <form class="form-main" #formGeneralStyle="ngForm" (ngSubmit)="formSubmit(formGeneralStyle.value)">
+                <div class="form-main__label-row">
+                    <input ngModel name="formLabel" #formLabel="ngModel" type="text" placeholder="Form Label">
+                </div>
+
+                <div class="form-main__form-box" *ngFor="let item of formStyle">
+                    <input type="color" ngModel name="textColor" #textColor="ngModel">
+                    <input type="color" ngModel name="bgColor" #bgColor="ngModel">
+                    <select type="text" placeholder="border" ngModel name="borderType" #borderType="ngModel">
+                        <option value="{{border}}" *ngFor="let border of item.formStyle.borderTypes">
+                            {{border}}
+                        </option>
+                    </select>
+                    <input type="color" ngModel name="borderColor" #borderColor="ngModel">
+                </div>
+                <button>Apply</button>
+            </form>
+        </div>
+    </cdk-accordion-item>
+</div>

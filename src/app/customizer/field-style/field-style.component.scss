@@ -1,0 +1,25 @@
+.field-style__wrapper {
+    display: flex;
+    flex-direction: column;
+
+    .field-style__accordion-item {
+        display: flex;
+        flex-direction: column;
+
+
+        .field-style__accordion-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            gap: 30px;
+        }
+
+        .field-style__accordion-body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+
+}
