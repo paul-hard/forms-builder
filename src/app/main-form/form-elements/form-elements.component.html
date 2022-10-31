@@ -1,0 +1,22 @@
+<div class="drop__wrapper" cdkDropList (cdkDropListDropped)="drop($event)" [cdkDropListData]="recivedElements">
+    <app-form></app-form>
+    <div *ngFor="let element of recivedElements">
+        <div class="dragable" *ngIf="element.element === 'Input'" cdkDrag>
+            <input type="text" name="" id="" placeholder="{{element.element}}">
+        </div>
+        <div class="dragable" *ngIf="element.element === 'Textarea'" cdkDrag>
+            <textarea type="text" name="" id="" placeholder="Textarea"></textarea>
+        </div>
+        <div class="dragable" *ngIf="element.element === 'Button'" cdkDrag>
+            <button>{{element.element}}</button>
+        </div>
+        <div class="dragable" *ngIf="element.element === 'Select'" cdkDrag>
+            <select name="" id="">
+                <option value="">{{element.element}}</option>
+            </select>
+        </div>
+        <div class="dragable" *ngIf="element.element === 'Checkbox'" cdkDrag>
+            <label for="checkbox">Checkbox</label>
+            <input type="checkbox" name="" id="checkbox">
+        </div>
+    </div>

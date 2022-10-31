@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 interface ICastomizeField {
   heading: string,
@@ -13,9 +13,10 @@ interface ICastomizeField {
   templateUrl: './field-style.component.html',
   styleUrls: ['./field-style.component.scss']
 })
-export class FieldStyleComponent implements OnInit {
 
-  fieldStyle: Array<ICastomizeField> = [
+export class FieldStyleComponent {
+
+  public fieldStyle: Array<ICastomizeField> = [
     {
       heading: 'Field Style',
       fieldStyle: {
@@ -25,8 +26,5 @@ export class FieldStyleComponent implements OnInit {
   ]
 
   constructor() { }
-
-  ngOnInit(): void {
-  }
 
 }

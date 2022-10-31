@@ -1,73 +1,12 @@
-.header {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: navy;
-}
-
-.wrapper {
-    display: flex;
-    justify-content: space-around;
-    margin-block: 2rem;
-}
-
-.drop-zone {
-    border: 3px solid navy;
-    width: 500px;
-    height: 500px;
+.elements {
     display: flex;
     flex-direction: column;
-    gap: 5px;
-    padding: 15px;
-}
 
-.drag-elemetns {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-}
-
-.drag-elemetns span {
-    padding: 4px;
-    border: 1px solid navy;
-}
-
-
-.heading {
-    text-align: center;
-}
-
-.accordion-header {
-    display: flex;
-    align-items: center;
-}
-
-.accordion-header h5 {
-    padding: 0px 50px 0px 0px;
-}
-
-.accordion-body {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-
-    .form-formStyle {
+    .element {
         display: flex;
-        flex-direction: column;
         align-items: center;
-        justify-content: space-between;
-        gap: 10px;
-    }
-
-    .form-box {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 10px;
-    }
-
-    .form-box input {
-        width: 75px;
+        padding: 10px;
+        border: 1px solid lightskyblue;
+        cursor: pointer;
     }
 }

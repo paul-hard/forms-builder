@@ -1,37 +1,40 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 
-interface IFormStyle {
-  formLabel: string,
-  textColor: string,
-  bgColor: string,
-  borderType: string,
-  borderColor: string
-}
+import { IFormStyle, IElements } from '../../interfaces/global.interfaces'
 
-interface IElements {
-  element: string,
-  html?: string,
-  placeholder?: string,
-}
 
 @Component({
   selector: 'app-form',
   templateUrl: './form.component.html',
   styleUrls: ['./form.component.scss']
 })
-export class FormComponent implements OnInit {
-  formLabel: string = "Form Label"
-  formElements: Array<IElements> = []
-  formGeneralStyles: Array<IFormStyle> = []; //have to recive data
-  tempData: any; // temporary for testing porps
 
-  constructor(private store: Store<{ customFormStyle: { customFormStyle: IFormStyle } }>) { }
+export class FormComponent implements OnInit {
+
+  public formElements: Array<IElements> = [];
+
+  public formGeneralStyles: IFormStyle = {
+    formLabel: "",
+    textColor: "",
+    bgColor: "",
+    borderType: "",
+    borderColor: ""
+  };
+
+  constructor(private store: Store<{ customFormStyle: IFormStyle }>) { }
 
   ngOnInit(): void {
     this.store.select('customFormStyle').subscribe(data => {
-      console.log(data.customFormStyle) //recive undefined
-      this.tempData = data;
+      console.log(data)
+      this.formGeneralStyles = {
+        ...data,
+        formLabel: data.formLabel,
+        textColor: data.textColor,
+        bgColor: data.bgColor,
+        borderType: data.borderType,
+        borderColor: data.borderColor
+      }
     })
   }
 
