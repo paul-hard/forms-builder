@@ -1,5 +1,6 @@
 <div class="main-form" [style.border-color]="formGeneralStyles.borderColor"
-    [style.background-color]="formGeneralStyles.bgColor" [style.border-style]="formGeneralStyles.borderType">
+    [style.background-color]="formGeneralStyles.bgColor" [style.border-style]="formGeneralStyles.borderType" cdkDropList
+    (cdkDropListDropped)="drop($event)" [cdkDropListData]="recivedElements">
     <div class="main-form__label">
         <h3 [style.color]="formGeneralStyles.textColor" *ngIf="formGeneralStyles.formLabel; else formLabel">
             {{formGeneralStyles.formLabel}}
@@ -8,6 +9,5 @@
             <h3>Form Label</h3>
         </ng-template>
     </div>
-    <div class="main-form__elements">
-    </div>
+    <app-form-elements [elements]="recivedElements"></app-form-elements>
 </div>

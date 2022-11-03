@@ -17,9 +17,9 @@ import { FormStyleComponent } from './customizer/form-style/form-style.component
 import { FieldStyleComponent } from './customizer/field-style/field-style.component';
 import { HeaderComponent } from './header/header/header.component';
 import { FormComponent } from './main-form/form/form.component';
-import { customizeFormReducer } from './reducers/reducer';
 import { FormElementsComponent } from './main-form/form-elements/form-elements.component'
 
+import { reducers } from './reducers'
 
 
 @NgModule({
@@ -40,7 +40,7 @@ import { FormElementsComponent } from './main-form/form-elements/form-elements.c
     BrowserAnimationsModule,
     DragDropModule,
     CdkAccordionModule,
-    StoreModule.forRoot({ customFormStyle: customizeFormReducer }),
+    StoreModule.forRoot(reducers),
     StoreDevtoolsModule.instrument({
       maxAge: 25, // Retains last 25 states
       logOnly: environment.production, // Restrict extension to log-only mode
@@ -51,3 +51,6 @@ import { FormElementsComponent } from './main-form/form-elements/form-elements.c
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+//{ fieldId: sendIdReducer }
+// { customFormStyle: customizeFormReducer }

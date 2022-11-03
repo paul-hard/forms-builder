@@ -1,7 +1,7 @@
 import { createReducer, on } from '@ngrx/store';
 import { customizeForm } from './customize-form.actions';
 
-import { IFormStyle } from '../interfaces/global.interfaces'
+import { IFormStyle } from '../../interfaces/global.interfaces'
 
 const initialState: IFormStyle = {
     formLabel: "",
@@ -26,3 +26,5 @@ export const customizeFormReducer = createReducer(
         }
     })
 )
+
+

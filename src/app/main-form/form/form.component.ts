@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
+import { CdkDragDrop, copyArrayItem, moveItemInArray } from '@angular/cdk/drag-drop';
 
 import { IFormStyle, IElements } from '../../interfaces/global.interfaces'
 
@@ -12,8 +13,6 @@ import { IFormStyle, IElements } from '../../interfaces/global.interfaces'
 
 export class FormComponent implements OnInit {
 
-  public formElements: Array<IElements> = [];
-
   public formGeneralStyles: IFormStyle = {
     formLabel: "",
     textColor: "",
@@ -22,11 +21,12 @@ export class FormComponent implements OnInit {
     borderColor: ""
   };
 
+  public recivedElements: IElements[] = [];
+
   constructor(private store: Store<{ customFormStyle: IFormStyle }>) { }
 
   ngOnInit(): void {
     this.store.select('customFormStyle').subscribe(data => {
-      console.log(data)
       this.formGeneralStyles = {
         ...data,
         formLabel: data.formLabel,
@@ -38,4 +38,23 @@ export class FormComponent implements OnInit {
     })
   }
 
+  drop(event: CdkDragDrop<IElements[]>): void {
+
+    if (event.previousContainer === event.container) {
+      return moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
+    }
+    copyArrayItem(
+      event.previousContainer.data,
+      this.recivedElements = event.container.data.map(item => {
+        return { ...item, id: item.id++ }
+      }),
+      event.previousIndex,
+      event.currentIndex,
+    )
+  }
+
 }
+
+//item.id++
+//Math.random().toString(16).slice(2)
+

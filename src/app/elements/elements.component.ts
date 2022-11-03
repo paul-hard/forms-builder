@@ -1,10 +1,6 @@
 import { Component, } from '@angular/core';
 
-interface IElements {
-  element: string,
-  html?: string,
-  placeholder?: string,
-}
+import { IElements } from '../interfaces/global.interfaces';
 
 @Component({
   selector: 'app-elements',
@@ -16,23 +12,23 @@ export class ElementsComponent {
   public elements: Array<IElements> = [
     {
       element: 'Input',
-      html: '<input>'
+      id: 1
     },
     {
       element: 'Textarea',
-      html: '<textarea></texarea>'
+      id: 100
     },
     {
       element: 'Button',
-      html: '<button></button>'
+      id: 200
     },
     {
       element: 'Checkbox',
-      html: '<input>'
+      id: 300
     },
     {
       element: 'Select',
-      html: '<select></select>'
+      id: 400
     },
   ];
 

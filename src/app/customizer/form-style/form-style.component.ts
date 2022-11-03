@@ -32,10 +32,11 @@ export class FormStyleComponent {
       }
     }
   ]
+  @Output() customizeForm: EventEmitter<IFormStyle> = new EventEmitter();
 
   constructor() { }
 
-  @Output() customizeForm: EventEmitter<IFormStyle> = new EventEmitter();
+
 
   formSubmit(event: IFormStyle) {
     this.customizeForm.emit({
@@ -49,19 +50,3 @@ export class FormStyleComponent {
 
 
 }
-
-
-// formSubmit(event: IFormStyle) {
-//   this.formGeneralStyles = this.formStyle.map(item => {
-//     return {
-//       ...item, formStyle: {
-//         label: event.formLabel,
-//         textColor: event.textColor,
-//         bgColor: event.bgColor,
-//         borderType: ['solid', 'dotted', 'dashed'],
-//         borderColor: event.borderColor
-//       }
-//     }
-//   })
-//   console.log(event);
-// }
