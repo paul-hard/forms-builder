@@ -1,10 +1,12 @@
 .main-form {
     display: flex;
     flex-direction: column;
-    border: 3px solid lightblue;
+    border: 1px solid lightblue;
+    border-radius: 5px;
 
     .main-form__label {
         display: flex;
         justify-content: center;
     }
+
 }

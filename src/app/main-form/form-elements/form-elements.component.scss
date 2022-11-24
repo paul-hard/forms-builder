@@ -1,0 +1,12 @@
+.dropped-elements {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+}
+
+.dragable {
+    margin-block: 5px;
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+    border: 1px solid lightskyblue;
+}

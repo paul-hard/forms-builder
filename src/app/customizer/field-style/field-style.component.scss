@@ -1,6 +1,7 @@
 .field-style__wrapper {
     display: flex;
     flex-direction: column;
+    border: 1px solid lightskyblue;
 
     .field-style__accordion-item {
         display: flex;
@@ -20,6 +21,35 @@
             justify-content: center;
             align-items: center;
         }
+    }
+}
+
+.field-style__form {
+    display: flex;
+    flex-direction: column;
+
+    .form__lebel {
+        display: flex;
+        gap: 5px;
+        justify-content: center;
+    }
+
+    .form__custom-holders {
+        display: flex;
+        gap: 5px;
+    }
+
+    .form__default {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 5px;
+        margin-block: 5px;
+    }
+
+    .form__custom-select {
+        display: flex;
+        gap: 5px;
+        justify-content: space-around;
     }
 
 }

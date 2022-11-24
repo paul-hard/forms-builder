@@ -11,8 +11,46 @@
         <!-- Accordion body -->
         <div class="field-style__accordion-body" role="region" [style.display]="accordionItem.expanded ? '' : 'none' "
             [attr.id]="'accordion-body-' + index" [attr.aria.labelledby]="'accordion-header-' + index">
-            <div>Lorem, ipsum dolor.</div>
-            <div>Lorem, ipsum.</div>
+            <form class="field-style__form" #fieldStyle="ngForm" (ngSubmit)="fieldSubmit(fieldStyle.value)">
+                <div *ngIf="fieldCredentials.name === 'select' || fieldCredentials.name === 'button' "
+                    class="form__lebel">
+                    <input ngModel name="fieldLabel" #fieldLabel="ngModel" type="text"
+                        placeholder="{{fieldCredentials.name}} label">
+                </div>
+                <div *ngIf="fieldCredentials.name === 'input' || fieldCredentials.name === 'textarea' || fieldCredentials.name === 'checkbox'"
+                    class="form__custom-holders">
+                    <input ngModel name="label" #label="ngModel" type="text"
+                        placeholder="{{fieldCredentials.name}} label">
+                    <input ngModel name="placeholder" #placeholder type="text"
+                        placeholder="{{fieldCredentials.name}} placeholder">
+                </div>
+                <div *ngIf="fieldCredentials.name" class="form__default">
+                    <label for="Width">Width<input ngModel name="width" #width="ngModel" id="Width" type="text"
+                            placeholder="px"></label>
+                    <label for="Heigth">Height<input ngModel name="height" #height="ngModel" id="Heigth" type="text"
+                            placeholder="px"></label>
+                    <label for="fz">Font size<input ngModel name="fz" #fz="ngModel" id="fz" type="text"
+                            placeholder="px"></label>
+                    <label for="fw">Font weight<select ngModel name="fw" #fw="ngModel" id="fw" type="text"
+                            placeholder="">
+                            <option *ngFor="let fw of item.fieldStyle.fw" value="{{fw}}">{{fw}}</option>
+                        </select></label>
+                    <label for="color">Color<input ngModel name="color" #color="ngModel" id="color" type="color"
+                            placeholder="RGB"></label>
+                    <label for="">Border style<select ngModel name="borderStyle" #borderStyle="ngModel" name="" id="">
+                            <option *ngFor="let border of item.fieldStyle.borderStyle" value="{{border}}">{{border}}
+                            </option>
+                        </select></label>
+                    <label for="">Required<input ngModel name="checkbox" #checkbox="ngModel" id="" type="checkbox"
+                            placeholder=""></label>
+                    <input type="submit" value="Apply">
+                    <button (click)="delete()">Delete</button>
+                </div>
+                <div *ngIf="fieldCredentials.name === 'select'" class="form__custom-select">
+                    <input ngModel name="option" #option="ngModel" type="text" placeholder="Add field"><button
+                        (click)="addOption(option.value)">Add</button>
+                </div>
+            </form>
         </div>
     </cdk-accordion-item>
 </div>

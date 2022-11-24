@@ -1,5 +1,6 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { IFormStyle } from '../customizer/customizer.component'
+import { Component, Output, EventEmitter } from '@angular/core';
+
+import { IFormStyle } from '../../interfaces/global.interfaces'
 
 interface ICastomizeForm {
   heading: string,
@@ -9,7 +10,6 @@ interface ICastomizeForm {
     bgColor: string,
     borderTypes: string[],
     borderColor: string,
-
   }
 }
 
@@ -18,11 +18,9 @@ interface ICastomizeForm {
   templateUrl: './form-style.component.html',
   styleUrls: ['./form-style.component.scss']
 })
-export class FormStyleComponent implements OnInit {
+export class FormStyleComponent {
 
-  // formGeneralStyles: Array<ICastomizeForm> = []
-
-  formStyle: Array<ICastomizeForm> = [
+  public formStyle: Array<ICastomizeForm> = [
     {
       heading: 'Form Style',
       formStyle: {
@@ -34,12 +32,11 @@ export class FormStyleComponent implements OnInit {
       }
     }
   ]
+  @Output() customizeForm: EventEmitter<IFormStyle> = new EventEmitter();
 
   constructor() { }
 
-  ngOnInit(): void {
-  }
-  @Output() customizeForm: EventEmitter<IFormStyle> = new EventEmitter();
+
 
   formSubmit(event: IFormStyle) {
     this.customizeForm.emit({
@@ -53,19 +50,3 @@ export class FormStyleComponent implements OnInit {
 
 
 }
-
-
-// formSubmit(event: IFormStyle) {
-//   this.formGeneralStyles = this.formStyle.map(item => {
-//     return {
-//       ...item, formStyle: {
-//         label: event.formLabel,
-//         textColor: event.textColor,
-//         bgColor: event.bgColor,
-//         borderType: ['solid', 'dotted', 'dashed'],
-//         borderColor: event.borderColor
-//       }
-//     }
-//   })
-//   console.log(event);
-// }

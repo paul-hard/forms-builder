@@ -1,42 +1,45 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { customizeForm } from 'src/app/reducers/customize-form.actions';
+import { customizeField } from 'src/app/reducers/customize-fields/customize-fields.action';
 
-export interface IFormStyle {
-  formLabel: string,
-  textColor: string,
-  bgColor: string,
-  borderType: string,
-  borderColor: string
-}
+import { customizeForm } from 'src/app/reducers/customize-form/customize-form.actions';
+import { IFormStyle, IFieldStyle } from '../../interfaces/global.interfaces'
+
 
 @Component({
   selector: 'app-customizer',
   templateUrl: './customizer.component.html',
   styleUrls: ['./customizer.component.scss']
 })
-export class CustomizerComponent implements OnInit {
+export class CustomizerComponent {
 
-
-
-  constructor(private store: Store<{ customFormStyle: { customFormStyle: IFormStyle } }>) { }
-
-
-  ngOnInit(): void {
-
-
-  }
+  constructor(
+    private store: Store<{ customFormStyle: IFormStyle, customFieldStyle: IFieldStyle }>,
+  ) { }
 
   takeCustomFormStyle(event: IFormStyle) {
     this.store.dispatch(customizeForm({
       formLabel: event.formLabel,
       textColor: event.textColor,
       bgColor: event.bgColor,
-      selectBorder: event.borderType,
+      borderType: event.borderType,
       borderColor: event.borderColor,
     }))
   }
 
-
-
+  takeCustomFieldStyle(event: IFieldStyle) {
+    console.log(event.color)
+    this.store.dispatch(customizeField({
+      label: event.label,
+      placeholder: event.placeholder,
+      width: event.width,
+      height: event.height,
+      fz: event.fz,
+      fw: event.fw,
+      color: event.color,
+      borderStyle: event.borderStyle,
+      option: event.option,
+      id: event.id
+    }))
+  }
 }

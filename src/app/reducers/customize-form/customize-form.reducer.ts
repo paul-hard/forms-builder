@@ -1,31 +1,30 @@
-import { createReducer, on } from "@ngrx/store";
-import { customizeForm } from "./customize-form.actions";
-import { IFormStyle } from "../interfaces";
+import { createReducer, on } from '@ngrx/store';
+import { customizeForm } from './customize-form.actions';
 
+import { IFormStyle } from '../../interfaces/global.interfaces'
 
-
-export const initialState: Array<IFormStyle> = [{
+const initialState: IFormStyle = {
     formLabel: "",
     textColor: "",
     bgColor: "",
-    selectBorder: "",
+    borderType: "",
     borderColor: "",
-
-}]
+}
 
 export const customizeFormReducer = createReducer(
     initialState,
     on(customizeForm, (state, action) => {
+        console.log(state);
         console.log(action);
         return {
             ...state,
             formLabel: action.formLabel,
             textColor: action.textColor,
             bgColor: action.bgColor,
-            selectBorder: action.selectBorder,
+            borderType: action.borderType,
             borderColor: action.borderColor,
-
         }
-
     })
 )
+
+
